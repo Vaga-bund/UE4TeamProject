@@ -137,4 +137,20 @@ void AUE4ProjectCharacter::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
+
+}
+
+void AUE4ProjectCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	PlayerGI = UGameInstance::GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
+	if (PlayerGI == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		PlayerGI->SetDamage(1);
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Attack ] : %d"), PlayerGI->GetDamage()));
+	}
 }

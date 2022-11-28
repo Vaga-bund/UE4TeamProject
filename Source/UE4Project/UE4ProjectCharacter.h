@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+//#include "MyGameInstance.h"
+#include "PlayerGameInstanceSubsystem.h"
+#include "Kismet/GameplayStatics.h"
 #include "UE4ProjectCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -31,6 +34,7 @@ public:
 
 protected:
 
+	virtual void BeginPlay() override;
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();
 
@@ -68,5 +72,9 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+
+public:
+	UPlayerGameInstanceSubsystem* PlayerGI;
 };
 
