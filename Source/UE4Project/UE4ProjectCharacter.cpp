@@ -150,7 +150,8 @@ void AUE4ProjectCharacter::BeginPlay()
 	}
 	else
 	{
-		PlayerGI->SetDamage(1);
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Attack ] : %d"), PlayerGI->GetDamage()));
+		PlayerGI->SetHp(PlayerHp);
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("===[Player]===")));
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Attack ] : %d"), PlayerGI->GetHp()));
 	}
 }

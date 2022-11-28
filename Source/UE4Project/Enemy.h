@@ -29,4 +29,14 @@ public:
 
 public:
 	UEnemyGameInstanceSubsystem* EnemyGI;
+
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		int EnemyHp;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		EState EnemyState;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		FString EnemyStateName = FString(TEXT(""));
 };

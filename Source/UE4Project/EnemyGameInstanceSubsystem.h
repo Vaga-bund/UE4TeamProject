@@ -4,25 +4,56 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "PlayerGameInstanceSubsystem.h"
 #include "EnemyGameInstanceSubsystem.generated.h"
 
 /**
  * 
  */
+
+UENUM(BlueprintType)
+enum class EState : uint8
+{
+	Enemy,
+	Absorption
+};
+
 UCLASS()
 class UE4PROJECT_API UEnemyGameInstanceSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
+
 public:
+	void EnemyGameInstanceSubsystem();
+	//~EnemyGameInstanceSubsystem();
 
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "MonsterStat")
-		int Damage;
+public:
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		int Damage = 1;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		int Hp;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		EState enemyState = EState::Enemy;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		FString EnemyStateName = FString(TEXT(""));
 
 
-	UFUNCTION(BlueprintPure, category = "MonsterStat")
-		int GetDamage() const { return Damage; }
+public:
+	UFUNCTION(BlueprintPure, category = "EnemyStat")
+		int GetHp() const { return Hp; }
+	UFUNCTION(BlueprintPure, category = "EnemyStat")
+		EState GetState() const { return enemyState; }
+	
 
-
-	UFUNCTION(BlueprintCallable, category = "MonsterStat")
-		void SetDamage(int curDamage) { Damage = curDamage; }
+public:
+	UFUNCTION(BlueprintCallable, category = "EnemyStat")
+		void SetHp(int curHp) { Hp = curHp; }
+	UFUNCTION(BlueprintCallable, category = "EnemyStat")
+		void SetState(EState curState) { enemyState = curState; }
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "EnemyStat")
+		void SetAddDamage(int fightDamage);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "EnemyStat")
+		void SetSubDamage();
+	UFUNCTION(BlueprintCallable, category = "EnemyDie")
+		void EnemyDie();
 };

@@ -76,5 +76,8 @@ public:
 
 public:
 	UPlayerGameInstanceSubsystem* PlayerGI;
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "PlayerStat")
+		int PlayerHp;
 };
 

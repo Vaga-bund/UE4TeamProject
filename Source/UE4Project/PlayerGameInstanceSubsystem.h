@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 //#include "MyGameInstance.h"
+#include "EnemyGameInstanceSubsystem.h"
 #include "PlayerGameInstanceSubsystem.generated.h"
 
 /**
@@ -16,14 +17,29 @@ class UE4PROJECT_API UPlayerGameInstanceSubsystem : public UGameInstanceSubsyste
 	GENERATED_BODY()
 
 public:
+	void PlayerGameInstanceSubsystem();
+	//~PlayerGameInstanceSubsystem();
+
+
+public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "PlayerStat")
-		int Damage;
+		int Damage = 1;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "PlayerStat")
+		int Hp;
 
-
+public:
 	UFUNCTION(BlueprintPure, category = "PlayerStat")
-		int GetDamage() const { return Damage; }
+		int GetHp() const { return Hp; }
 
-
+public:
 	UFUNCTION(BlueprintCallable, category = "PlayerStat")
-		void SetDamage(int curDamage) { Damage = curDamage; }
+		void SetHp(int curHp) { Hp = curHp; }
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "PlayerStat")
+		void SetAddDamage(int fightDamage);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "PlayerStat")
+		void SetSubDamage();
+	UFUNCTION(BlueprintCallable, category = "PlayerDie")
+		void PlayerDie();
+
+
 };
