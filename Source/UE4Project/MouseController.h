@@ -21,15 +21,18 @@ public:
 	UPROPERTY()
 	FVector mouseLocation;
 
-	UPROPERTY()
-	FVector playerLocation;
-
 	UPROPERTY(BlueprintReadWrite)
 	bool mouseClick;
 
 	UFUNCTION(BlueprintCallable)
-	void MouseLeftPressed(const FVector& Location);
+	void MouseMove();
 
 	UFUNCTION()
-	void MoveToMouseCursor();
+	void MouseCursor(); //마우스 위치 가져옴
+
+	UFUNCTION()
+	virtual void SetupInputComponent() override;
+
+	UFUNCTION()
+	void InputMouseLeft(float AxisValue);
 };
