@@ -23,7 +23,7 @@ void UEnemyGameInstanceSubsystem::SetSubDamage_Implementation()
 	}
 	if (Hp < PlayerGI->Hp)
 	{ 
-		Hp = PlayerGI->Damage - Hp;
+		Hp -= PlayerGI->Damage;
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ EnAttack_2 ] : %d"), GetHp()));
 	}
 
@@ -42,6 +42,8 @@ void UEnemyGameInstanceSubsystem::EnemyDie()
 		}
 		SetState(enemyState);
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, "State : " + EnemyStateName);
-		
+
 	}
+
+
 }

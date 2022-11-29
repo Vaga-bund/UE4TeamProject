@@ -16,10 +16,6 @@ class UE4PROJECT_API UPlayerGameInstanceSubsystem : public UGameInstanceSubsyste
 {
 	GENERATED_BODY()
 
-public:
-	void PlayerGameInstanceSubsystem();
-	//~PlayerGameInstanceSubsystem();
-
 
 public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "PlayerStat")

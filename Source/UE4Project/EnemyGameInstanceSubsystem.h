@@ -23,9 +23,6 @@ class UE4PROJECT_API UEnemyGameInstanceSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
-public:
-	void EnemyGameInstanceSubsystem();
-	//~EnemyGameInstanceSubsystem();
 
 public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
