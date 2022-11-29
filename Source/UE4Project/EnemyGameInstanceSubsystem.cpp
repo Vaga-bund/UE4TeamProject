@@ -2,13 +2,15 @@
 
 
 #include "EnemyGameInstanceSubsystem.h"
+#include "Enemy.h"
+#include "Absorption.h"
 
 void UEnemyGameInstanceSubsystem::SetAddDamage_Implementation(int fightDamage)
 {
 
 	Hp += fightDamage;
 	SetHp(Hp);
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ EnAttack ] : %d"), GetHp()));
+	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curEnDamage_add ] : %d"), GetHp()));
 
 
 }
@@ -24,7 +26,7 @@ void UEnemyGameInstanceSubsystem::SetSubDamage_Implementation()
 	if (Hp < PlayerGI->Hp)
 	{ 
 		Hp -= PlayerGI->Damage;
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ EnAttack_2 ] : %d"), GetHp()));
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curEnDamage_sub ] : %d"), GetHp()));
 	}
 
 }
@@ -42,6 +44,9 @@ void UEnemyGameInstanceSubsystem::EnemyDie()
 		}
 		SetState(enemyState);
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, "State : " + EnemyStateName);
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Absorption ] ")));
+
+		
 
 	}
 

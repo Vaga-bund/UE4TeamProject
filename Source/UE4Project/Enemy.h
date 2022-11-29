@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "EnemyGameInstanceSubsystem.h"
+#include "Engine/Classes/Components/StaticMeshComponent.h"
+#include "Engine/Classes/Components/BoxComponent.h"
 #include "Enemy.generated.h"
 
 UCLASS()
@@ -39,4 +41,14 @@ public:
 
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
 		FString EnemyStateName = FString(TEXT(""));
+
+public:
+	UPROPERTY(VisibleAnywhere)
+		class UStaticMeshComponent* StaticMeshMesh;
+	UPROPERTY(VisibleAnywhere)
+		class UBoxComponent* absBox;
+	UPROPERTY(VisibleInstanceOnly)
+		UMaterialInterface* _ghostMaterial = nullptr;
+	FString ghostMaterialName = "Material'/Game/Material/EnemyColor_Inst'";
+	
 };

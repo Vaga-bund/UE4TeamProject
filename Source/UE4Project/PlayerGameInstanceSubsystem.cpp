@@ -8,7 +8,7 @@ void UPlayerGameInstanceSubsystem::SetAddDamage_Implementation(int fightDamage)
 {
 	Hp += fightDamage;
 	SetHp(Hp);
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ CaAttack ] : %d"), GetHp()));
+	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_add ] : %d"), GetHp()));
 
 
 }
@@ -24,7 +24,7 @@ void UPlayerGameInstanceSubsystem::SetSubDamage_Implementation()
 	if (Hp < EnemyGI->Hp)
 	{
 		Hp -= EnemyGI->Damage;
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ caAttack_2 ] : %d"), GetHp()));
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
 	}	
 
 }
