@@ -14,11 +14,10 @@ class UE4PROJECT_API UPlayerGameInstanceSubsystem : public UGameInstanceSubsyste
 {
 	GENERATED_BODY()
 	
-public:
 	//플레이어 HP 및 플레이어 공격력은 게임이 끝날때까지 유지 되기 때문에 게임 인스턴스로 관리함
-	UPROPERTY()
-	int32 playerHP = 100;
+public:
+	UPlayerGameInstanceSubsystem();
 
 	UPROPERTY()
-	int32 playerPower = 100;
+	int32 playerPower;
 };

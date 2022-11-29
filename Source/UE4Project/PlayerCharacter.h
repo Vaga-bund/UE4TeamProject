@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "PlayerGameInstanceSubsystem.h"
-#include "GameFramework/CharacterMovementComponent.h"
+//#include "GameFramework/CharacterMovementComponent.h"
 #include "PlayerCharacter.generated.h"
 
 UCLASS()
@@ -29,8 +29,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION()
-	void Attack(int32 monsterPower);
+	void Crash(int32 monsterPower); //ºÎµúÃÆÀ» ¶§
 
 private:
-	UGameInstanceSubsystem* playerGISS;
+	UPROPERTY()
+	UPlayerGameInstanceSubsystem* playerGISS;
 };

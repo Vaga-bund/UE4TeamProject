@@ -18,8 +18,6 @@ void APlayerCharacter::BeginPlay()
 
 	//playerGISS = UGameInstance::GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
 	playerGISS = GetGameInstance()->GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
-
-	
 }
 
 // Called every frame
@@ -35,7 +33,12 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
-void APlayerCharacter::Attack(int32 monsterPower) //일단 근거리 공격 기준으로 작업
+void APlayerCharacter::Crash(int32 monsterPower)
 {
+	if (playerGISS->playerPower < monsterPower)
+	{
 
+	}
+
+	playerGISS->playerPower--;
 }

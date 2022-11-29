@@ -2,3 +2,8 @@
 //¹Ú¿¬Áö
 
 #include "PlayerGameInstanceSubsystem.h"
+
+UPlayerGameInstanceSubsystem::UPlayerGameInstanceSubsystem() : playerPower(100)
+{
+
+}
