@@ -11,7 +11,8 @@
 
 const FName AEnemyAIController::HomePosKey(TEXT("HomePos"));
 const FName AEnemyAIController::PatrolPosKey(TEXT("PatrolPos"));
-const FName AEnemyAIController::TargetKey(TEXT("Target"));
+const FName AEnemyAIController::TargetKey(TEXT("TargetPlayer"));
+const FName AEnemyAIController::TargetNeutralKey(TEXT("TargetNeutral"));
 
 AEnemyAIController::AEnemyAIController()
 {
