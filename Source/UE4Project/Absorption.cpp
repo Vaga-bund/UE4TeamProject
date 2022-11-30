@@ -12,18 +12,17 @@ AAbsorption::AAbsorption()
 	absBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
 	StaticMeshMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
 	SetRootComponent(StaticMeshMesh);
-	absBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	absBox->SetupAttachment(StaticMeshMesh);
 
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> mesh(TEXT("StaticMesh'/Engine/BasicShapes/Cube'"));
 	static ConstructorHelpers::FObjectFinder<UMaterialInterface> ghostMaterialAsset(*ghostMaterialName);
 	_ghostMaterial = ghostMaterialAsset.Object;
-
 	if (mesh.Succeeded())
 	{
 		absBox->SetWorldScale3D(FVector(2.0f, 2.0f, 2.0f));
 		StaticMeshMesh->SetStaticMesh(mesh.Object);
 		StaticMeshMesh->SetMaterial(0, _ghostMaterial);
+		AbsorptionSpawnCheck = false;
 	}
 
 }
@@ -42,7 +41,7 @@ void AAbsorption::BeginPlay()
 	{
 		AbsorGI->SetHp(EnemyGI->GetMaxHp());
 		AbsorGI->GetHp();
-		int(AbsorGI->Hp /= 2);
+		int(AbsorGI->Hp *= 1.5f);
 		AbsorptionHp = AbsorGI->Hp;
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max 2 ] : %d"), AbsorptionHp));
 

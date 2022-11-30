@@ -26,11 +26,11 @@ class UE4PROJECT_API UEnemyGameInstanceSubsystem : public UGameInstanceSubsystem
 
 public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
-		int Damage = 1;
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
 		int Hp;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
 		int MaxHp;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		bool EnemydieCheck;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
 		EState enemyState = EState::Enemy;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
@@ -56,7 +56,7 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "EnemyStat")
 		void SetAddDamage(int fightDamage);
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "EnemyStat")
-		void SetSubDamage();
+		void SetSubDamage(int fightDamage);
 	UFUNCTION(BlueprintCallable, category = "EnemyDie")
 		void EnemyDie();
 };

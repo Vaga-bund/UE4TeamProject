@@ -38,7 +38,7 @@ public:
 public:
 	UPROPERTY(VisibleAnywhere)
 		class UStaticMeshComponent* StaticMeshMesh;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		class UBoxComponent* absBox;
 	UPROPERTY(VisibleInstanceOnly)
 		UMaterialInterface* _ghostMaterial = nullptr;
@@ -47,4 +47,6 @@ public:
 public:
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
 		int AbsorptionHp;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
+		bool AbsorptionSpawnCheck;
 };

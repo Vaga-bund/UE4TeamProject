@@ -47,6 +47,7 @@ void AEnemy::BeginPlay()
 		EnemyGI->SetHp(EnemyHp);
 		EnemyGI->SetMaxHp(EnemyGI->GetHp());
 		EnemyGI->SetState(EnemyState);
+		EnemyGI->EnemydieCheck = false;
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Attack ] : %d"), EnemyGI->GetHp()));
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max ] : %d"), EnemyGI->GetMaxHp()));
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, "State : " + EnemyStateName);

@@ -13,7 +13,7 @@ void UPlayerGameInstanceSubsystem::SetAddDamage_Implementation(int fightDamage)
 
 }
 
-void UPlayerGameInstanceSubsystem::SetSubDamage_Implementation()
+void UPlayerGameInstanceSubsystem::SetSubDamage_Implementation(int fightDamage)
 {
 	UEnemyGameInstanceSubsystem* EnemyGI;
 	EnemyGI = UGameInstance::GetSubsystem<UEnemyGameInstanceSubsystem>(GetWorld()->GetGameInstance());
@@ -21,11 +21,28 @@ void UPlayerGameInstanceSubsystem::SetSubDamage_Implementation()
 	{
 		return;
 	}
-	if (Hp < EnemyGI->Hp)
+	else
 	{
-		Hp -= EnemyGI->Damage;
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
-	}	
+		if (MaxHp > fightDamage)
+		{
+			Hp = MaxHp - fightDamage;
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
+		}
+		else if (Hp == fightDamage)
+		{
+			;
+		}
+		else
+		{
+			Hp = MaxHp - fightDamage;
+			if (Hp < 1)
+			{
+				Hp = 0;
+			}
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
+		}
+	}
+	
 
 }
 

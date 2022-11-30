@@ -15,7 +15,7 @@ void UEnemyGameInstanceSubsystem::SetAddDamage_Implementation(int fightDamage)
 
 }
 
-void UEnemyGameInstanceSubsystem::SetSubDamage_Implementation()
+void UEnemyGameInstanceSubsystem::SetSubDamage_Implementation(int fightDamage)
 {
 	UPlayerGameInstanceSubsystem* PlayerGI;
 	PlayerGI = UGameInstance::GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
@@ -23,18 +23,36 @@ void UEnemyGameInstanceSubsystem::SetSubDamage_Implementation()
 	{
 		return;
 	}
-	if (Hp < PlayerGI->Hp)
-	{ 
-		Hp -= PlayerGI->Damage;
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curEnDamage_sub ] : %d"), GetHp()));
+	else
+	{
+		if (MaxHp > fightDamage)
+		{
+			Hp = MaxHp - fightDamage;
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curEnDamage_sub ] : %d"), GetHp()));
+		}
+		else if (Hp == fightDamage)
+		{
+			;
+		}
+		else
+		{
+			Hp = MaxHp - fightDamage;
+			if (Hp <= 0)
+			{
+				Hp = 0;
+				EnemydieCheck = true;
+			}
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curEnDamage_sub ] : %d"), GetHp()));
+		}
 	}
+	
 
 }
 
 
 void UEnemyGameInstanceSubsystem::EnemyDie()
 {
-	if (Hp >= 0)
+	if (Hp <= 0)
 	{
 		enemyState = EState::Absorption;
 		const UEnum* EnemyStateEnum = FindObject<UEnum>(ANY_PACKAGE, TEXT("EState"), true);
@@ -46,7 +64,6 @@ void UEnemyGameInstanceSubsystem::EnemyDie()
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, "State : " + EnemyStateName);
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Absorption ] ")));
 
-		
 
 	}
 
