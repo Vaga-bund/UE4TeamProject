@@ -12,7 +12,7 @@
 const FName AEnemyAIController::HomePosKey(TEXT("HomePos"));
 const FName AEnemyAIController::PatrolPosKey(TEXT("PatrolPos"));
 const FName AEnemyAIController::TargetKey(TEXT("TargetPlayer"));
-const FName AEnemyAIController::TargetNeutralKey(TEXT("TargetNeutral"));
+const FName AEnemyAIController::TargetNpcKey(TEXT("TargetNpc"));
 
 AEnemyAIController::AEnemyAIController()
 {
