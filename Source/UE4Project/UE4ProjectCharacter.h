@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-//#include "MyGameInstance.h"
 #include "PlayerGameInstanceSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "UE4ProjectCharacter.generated.h"

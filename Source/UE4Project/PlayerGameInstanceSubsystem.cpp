@@ -15,35 +15,31 @@ void UPlayerGameInstanceSubsystem::SetAddDamage_Implementation(int fightDamage)
 
 void UPlayerGameInstanceSubsystem::SetSubDamage_Implementation(int fightDamage)
 {
-	UEnemyGameInstanceSubsystem* EnemyGI;
-	EnemyGI = UGameInstance::GetSubsystem<UEnemyGameInstanceSubsystem>(GetWorld()->GetGameInstance());
-	if (EnemyGI == nullptr)
+	if (MaxHp >= fightDamage)
 	{
-		return;
+		Hp = Hp - fightDamage;
+		SetHp(Hp);
+		if (Hp <= 0)
+		{
+			Hp = 0;
+			PlayerDieCheck = true;
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ PlayerDie ] : %d"), PlayerDieCheck));
+		}
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
 	}
-	else
+	/*else
 	{
-		if (MaxHp > fightDamage)
+		Hp = fightDamage - Hp;
+		SetHp(Hp);
+		if (Hp <= 0)
 		{
-			Hp = MaxHp - fightDamage;
-			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
+			Hp = 0;
+			PlayerDieCheck = true;
+			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ PlayerDie ] : %d"), PlayerDieCheck));
+			PlayerDie();
 		}
-		else if (Hp == fightDamage)
-		{
-			;
-		}
-		else
-		{
-			Hp = MaxHp - fightDamage;
-			if (Hp < 1)
-			{
-				Hp = 0;
-			}
-			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
-		}
-	}
-	
-
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ curCaDamage_sub ] : %d"), GetHp()));
+	}*/
 }
 
 void UPlayerGameInstanceSubsystem::PlayerDie()

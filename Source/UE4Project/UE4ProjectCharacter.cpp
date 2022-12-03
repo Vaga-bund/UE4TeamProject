@@ -152,6 +152,7 @@ void AUE4ProjectCharacter::BeginPlay()
 	{
 		PlayerGI->SetHp(PlayerHp);
 		PlayerGI->SetMaxHp(PlayerGI->GetHp());
+		PlayerGI->PlayerDieCheck = false;
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Attack ] : %d"), PlayerGI->GetHp()));
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max ] : %d"), PlayerGI->GetMaxHp()));
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("===[Player]===")));

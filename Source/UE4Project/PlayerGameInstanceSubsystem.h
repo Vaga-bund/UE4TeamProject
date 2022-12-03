@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-//#include "MyGameInstance.h"
-#include "EnemyGameInstanceSubsystem.h"
 #include "PlayerGameInstanceSubsystem.generated.h"
 
 /**
@@ -22,6 +20,8 @@ public:
 		int Hp;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "PlayerStat")
 		int MaxHp;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "PlayerStat")
+		bool PlayerDieCheck;
 	
 
 public:

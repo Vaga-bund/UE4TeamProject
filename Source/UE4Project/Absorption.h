@@ -4,8 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "EnemyGameInstanceSubsystem.h"
-#include "AbsorptionGameInstanceSubsystem.h"
+#include "Enemy.h"
 #include "Engine/Classes/Components/StaticMeshComponent.h"
 #include "Engine/Classes/Components/BoxComponent.h"
 #include "Absorption.generated.h"
@@ -32,8 +31,11 @@ public:
 
 
 public:
-	UEnemyGameInstanceSubsystem* EnemyGI;
-	UAbsorptionGameInstanceSubsystem* AbsorGI;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
+		int AbsorptionHp;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
+		bool AbsorptionSpawnCheck;
+
 
 public:
 	UPROPERTY(VisibleAnywhere)
@@ -44,9 +46,8 @@ public:
 		UMaterialInterface* _ghostMaterial = nullptr;
 	FString ghostMaterialName = "Material'/Game/Material/AbsorptionColor_Inst'";
 
+
 public:
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
-		int AbsorptionHp;
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
-		bool AbsorptionSpawnCheck;
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "AbsorptionStat")
+		void AbsorptionInit();
 };

@@ -31,21 +31,7 @@ AAbsorption::AAbsorption()
 void AAbsorption::BeginPlay()
 {
 	Super::BeginPlay();
-	EnemyGI = UGameInstance::GetSubsystem<UEnemyGameInstanceSubsystem>(GetWorld()->GetGameInstance());
-	AbsorGI = UGameInstance::GetSubsystem<UAbsorptionGameInstanceSubsystem>(GetWorld()->GetGameInstance());
-	if (AbsorGI == nullptr && EnemyGI == nullptr)
-	{
-		return;
-	}
-	else
-	{
-		AbsorGI->SetHp(EnemyGI->GetMaxHp());
-		AbsorGI->GetHp();
-		int(AbsorGI->Hp *= 1.5f);
-		AbsorptionHp = AbsorGI->Hp;
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max 2 ] : %d"), AbsorptionHp));
-
-	}
+	AbsorptionInit();
 }
 
 // Called every frame
@@ -59,5 +45,21 @@ void AAbsorption::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void AAbsorption::AbsorptionInit_Implementation()
+{
+	AEnemy* enemy = Cast<AEnemy>(GetInstigator());
+	if (enemy == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		AbsorptionHp = enemy->EnemyMaxHp;
+		int(AbsorptionHp *= 1.5f);
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max 2 ] : %d"), AbsorptionHp));
+
+	}
 }
 

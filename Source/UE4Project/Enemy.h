@@ -4,11 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "EnemyGameInstanceSubsystem.h"
+#include "PlayerGameInstanceSubsystem.h"
 #include "Engine/Classes/Components/StaticMeshComponent.h"
 #include "Engine/Classes/Components/BoxComponent.h"
 #include "Enemy.generated.h"
 
+
+UENUM(BlueprintType)
+enum class EState : uint8
+{
+	Enemy,
+	Absorption
+};
 UCLASS()
 class UE4PROJECT_API AEnemy : public APawn
 {
@@ -30,15 +37,14 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 public:
-	UEnemyGameInstanceSubsystem* EnemyGI;
-
-
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat", meta=(ClampMin = 0))
 		int EnemyHp;
-
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
-		EState EnemyState;
-
+		int EnemyMaxHp;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		bool EnemydieCheck;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
+		EState EnemyState = EState::Enemy;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "EnemyStat")
 		FString EnemyStateName = FString(TEXT(""));
 
@@ -49,6 +55,14 @@ public:
 		class UBoxComponent* absBox;
 	UPROPERTY(VisibleInstanceOnly)
 		UMaterialInterface* _ghostMaterial = nullptr;
-	FString ghostMaterialName = "Material'/Game/Material/EnemyColor_Inst'";
-	
+	UPROPERTY(VisibleAnywhere)
+		FString ghostMaterialName = "Material'/Game/Material/EnemyColor_Inst'";
+
+public:
+	/*UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "EnemyStat")
+		void SetAddDamage(int fightDamage);*/
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "EnemyStat")
+		void SetSubDamage(int fightDamage);
+	UFUNCTION(BlueprintCallable, category = "EnemyDie")
+		void EnemyDie();
 };
