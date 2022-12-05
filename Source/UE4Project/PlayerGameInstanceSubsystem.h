@@ -18,6 +18,6 @@ class UE4PROJECT_API UPlayerGameInstanceSubsystem : public UGameInstanceSubsyste
 public:
 	UPlayerGameInstanceSubsystem();
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	int32 playerPower;
 };

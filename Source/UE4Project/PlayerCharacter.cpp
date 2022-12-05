@@ -35,10 +35,12 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 void APlayerCharacter::Crash(int32 monsterPower)
 {
-	if (playerGISS->playerPower < monsterPower)
+	if (playerGISS->playerPower <= monsterPower)
 	{
-
+		playerGISS->playerPower = 0;
 	}
-
-	playerGISS->playerPower--;
+	else
+	{
+		playerGISS->playerPower -= monsterPower;
+	}
 }
