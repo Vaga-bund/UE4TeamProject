@@ -3,7 +3,7 @@
 
 #include "DetectNpcBTService.h"
 #include "EnemyAIController.h"
-#include "UE4ProjectCharacter.h"
+#include "./UE4Project/UE4ProjectCharacter.h"
 #include "NpcSample.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "DrawDebugHelpers.h"

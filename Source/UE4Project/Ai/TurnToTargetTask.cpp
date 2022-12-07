@@ -2,7 +2,7 @@
 
 
 #include "TurnToTargetTask.h"
-#include "UE4ProjectCharacter.h"
+#include "./UE4Project/UE4ProjectCharacter.h"
 #include "EnemyAIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
