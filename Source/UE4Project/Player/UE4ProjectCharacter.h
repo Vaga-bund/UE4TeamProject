@@ -74,12 +74,8 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:
-	UFUNCTION(BlueprintCallable)
-	void Crash(int32 monsterPower); //ºÎµúÃÆÀ» ¶§
-
 private:
-	UPROPERTY()
-	UPlayerGameInstanceSubsystem* playerGISS;
+	//UPROPERTY()
+	//UPlayerGameInstanceSubsystem* playerGISS;
 };
 

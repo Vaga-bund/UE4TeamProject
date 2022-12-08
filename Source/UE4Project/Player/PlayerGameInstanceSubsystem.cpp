@@ -3,7 +3,7 @@
 
 #include "PlayerGameInstanceSubsystem.h"
 
-UPlayerGameInstanceSubsystem::UPlayerGameInstanceSubsystem() : playerPower(100)
+UPlayerGameInstanceSubsystem::UPlayerGameInstanceSubsystem() : playerPower(5)
 {
 
 }
