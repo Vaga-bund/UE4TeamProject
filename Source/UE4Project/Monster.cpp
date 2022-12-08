@@ -48,7 +48,7 @@ void AMonster::Crash()
 	}
 }
 
-void AMonster::SetMonsterPower(const int32& plusPower)
+void AMonster::SetMonsterPower(int32 plusPower)
 {
 	monsterPower += plusPower;
 }

@@ -34,7 +34,7 @@ public:
 	void Crash(); //부딪쳤을 때
 
 	UFUNCTION(BlueprintCallable)
-	void SetMonsterPower(const int32& plusPower); //중립(랜덤 스폰 되는 것만) 또는 몬스터와 충돌했을 때 파워를 받음
+	void SetMonsterPower(int32 plusPower); //중립(랜덤 스폰 되는 것만) 또는 몬스터와 충돌했을 때 파워를 받음
 
 private:
 	UPROPERTY()
