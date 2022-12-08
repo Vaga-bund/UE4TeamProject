@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "PlayerGameInstanceSubsystem.h"
+#include "UE4Project/Player/PlayerGameInstanceSubsystem.h"
 #include "Engine/Classes/Components/StaticMeshComponent.h"
 #include "Engine/Classes/Components/BoxComponent.h"
 #include "Enemy.generated.h"

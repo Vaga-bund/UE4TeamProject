@@ -2,7 +2,7 @@
 
 #include "DetectBTService.h"
 #include "EnemyAIController.h"
-#include "./UE4Project/UE4ProjectCharacter.h"
+#include "UE4Project/Player/UE4ProjectCharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "DrawDebugHelpers.h"
 

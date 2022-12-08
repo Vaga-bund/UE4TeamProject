@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "UE4ProjectGameMode.h"
-#include "UE4ProjectCharacter.h"
+#include "UE4Project/Player/UE4ProjectCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AUE4ProjectGameMode::AUE4ProjectGameMode()
