@@ -49,14 +49,14 @@ void AAbsorption::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void AAbsorption::AbsorptionInit_Implementation()
 {
-	AEnemy* enemy = Cast<AEnemy>(GetInstigator());
-	if (enemy == nullptr)
+	AMonster* monmster = Cast<AMonster>(GetInstigator());
+	if (monmster == nullptr)
 	{
 		return;
 	}
 	else
 	{
-		AbsorptionHp = enemy->EnemyMaxHp;
+		AbsorptionHp = monmster->monsterPowerMax;
 		int(AbsorptionHp *= 1.5f);
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max 2 ] : %d"), AbsorptionHp));
 

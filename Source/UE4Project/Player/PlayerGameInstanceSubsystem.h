@@ -20,4 +20,7 @@ public:
 
 	UPROPERTY(BlueprintReadOnly)
 	int32 playerPower;
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "PlayerStat")
+		void SetAddDamage(int fightDamage);
 };
