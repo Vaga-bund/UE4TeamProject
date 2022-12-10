@@ -31,7 +31,6 @@ AAbsorption::AAbsorption()
 void AAbsorption::BeginPlay()
 {
 	Super::BeginPlay();
-	AbsorptionInit();
 }
 
 // Called every frame
@@ -49,17 +48,32 @@ void AAbsorption::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 void AAbsorption::AbsorptionInit_Implementation()
 {
-	AMonster* monmster = Cast<AMonster>(GetInstigator());
-	if (monmster == nullptr)
+	AMonster* monster = Cast<AMonster>(GetInstigator());
+	if (monster == nullptr)
 	{
 		return;
 	}
 	else
 	{
-		AbsorptionHp = monmster->monsterPowerMax;
+		AbsorptionHp = monster->monsterPowerMax;
+		const UEnum* AbsorptionStateEnum = FindObject<UEnum>(ANY_PACKAGE, TEXT("EAState"), true);
+		if (AbsorptionStateEnum)
+		{
+			AbsorptionStateName = AbsorptionStateEnum->GetNameStringByValue((int64)AbsorptionState);
+		}
+
 		int(AbsorptionHp *= 1.5f);
 		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max 2 ] : %d"), AbsorptionHp));
 
 	}
 }
 
+void AAbsorption::AbsorptionRandomInit_Implementation()
+{
+	const UEnum* AbsorptionStateEnum = FindObject<UEnum>(ANY_PACKAGE, TEXT("EAState"), true);
+	if (AbsorptionStateEnum)
+	{
+		AbsorptionStateName = AbsorptionStateEnum->GetNameStringByValue((int64)AbsorptionState);
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ RandomHp ] : %d"), AbsorptionHp));
+}

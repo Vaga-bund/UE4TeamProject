@@ -35,6 +35,7 @@ public:
 	//중립체력 계속할 때 필요( monsterPower이걸로 사용하면 적 체력
 	// 계산된 상태로 나와서 0이 출력...)
 
+
 	UFUNCTION(BlueprintCallable)
 	void Crash(); //부딪쳤을 때
 

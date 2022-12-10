@@ -9,6 +9,13 @@
 #include "Engine/Classes/Components/BoxComponent.h"
 #include "Absorption.generated.h"
 
+
+UENUM(BlueprintType)
+enum class EAState : uint8
+{
+	RandomSpawn,
+	DieAfterSpawn
+};
 UCLASS()
 class UE4PROJECT_API AAbsorption : public APawn
 {
@@ -35,6 +42,10 @@ public:
 		int AbsorptionHp;
 	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
 		bool AbsorptionSpawnCheck;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
+		EAState AbsorptionState;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, category = "AbsorptionStat")
+		FString AbsorptionStateName = FString(TEXT(""));
 
 
 public:
@@ -50,4 +61,6 @@ public:
 public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "AbsorptionStat")
 		void AbsorptionInit();
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "AbsorptionStat")
+		void AbsorptionRandomInit();
 };
