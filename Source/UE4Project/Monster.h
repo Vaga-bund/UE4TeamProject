@@ -37,8 +37,8 @@ public:
 	//중립체력 계속할 때 필요( monsterPower이걸로 사용하면 적 체력
 	// 계산된 상태로 나와서 0이 출력...)
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//bool addMonsterBool; //몬스터 체력 더 큰지 체크
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool dead; //죽었는지 체크
 
 	UFUNCTION(BlueprintCallable)
 	void Crash(); //부딪쳤을 때
@@ -46,8 +46,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetMonsterPower(int32 plusPower); //중립(랜덤 스폰 되는 것만) 또는 몬스터와 충돌했을 때 파워를 받음
 
-	//UFUNCTION(BlueprintCallable)
-	//void AddMonster(AActor* otherActor);
+	UFUNCTION(BlueprintCallable)
+	void AddMonster(AActor* otherActor);
+
+	UPROPERTY()
+	int32 radomInt;
 
 private:
 	UPROPERTY()

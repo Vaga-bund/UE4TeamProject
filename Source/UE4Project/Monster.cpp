@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
-AMonster::AMonster()/*addMonsterBool(false)*/
+AMonster::AMonster() : radomInt(0), dead(false)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -55,21 +55,49 @@ void AMonster::SetMonsterPower(int32 plusPower)
 {
 	monsterPower += plusPower;
 }
-/*
+
 void AMonster::AddMonster(AActor* otherActor)
 {
 	AMonster* otherMonster = Cast<AMonster>(otherActor);
 
-	if (monsterPower > otherMonster->monsterPower)
+	if (otherMonster != nullptr) //형변환 성공했을 때만
 	{
-		SetMonsterPower(otherMonster->monsterPower);
-		addMonsterBool = true;
+		if (monsterPower > otherMonster->monsterPower)
+		{
+			SetMonsterPower(otherMonster->monsterPower);
+		}
+		else if (monsterPower == otherMonster->monsterPower)
+		{
+			radomInt = FMath::RandRange(0, 10);
+
+			//랜덤값을 서로 비교하게 하기 만약 같은 값이면 다시 돌림
+			while (0)
+			{
+				if (radomInt > otherMonster->radomInt)
+				{
+					SetMonsterPower(otherMonster->monsterPower);
+					break;
+				}
+				else if (radomInt < otherMonster->radomInt)
+				{
+					dead = true;
+					Destroy();
+					break;
+				}
+				else
+				{
+					radomInt = FMath::RandRange(0, 10);
+				}
+			}
+		}
+		else
+		{
+			dead = true;
+			Destroy();
+		}
 	}
-	else if (monsterPower == otherMonster->monsterPower)
-	{
-		//둘 중 하나만 삭제할 방법을 알면 추가할 것
-	}
-}*/
+
+}
 /*
 void AMonster::Destroyed()
 {
