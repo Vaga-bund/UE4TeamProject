@@ -60,7 +60,7 @@ void AMonster::AddMonster(AActor* otherActor)
 {
 	AMonster* otherMonster = Cast<AMonster>(otherActor);
 
-	if (otherMonster != nullptr) //형변환 성공했을 때만
+	if (otherMonster != nullptr)
 	{
 		if (monsterPower > otherMonster->monsterPower)
 		{
@@ -70,7 +70,6 @@ void AMonster::AddMonster(AActor* otherActor)
 		{
 			radomInt = FMath::RandRange(0, 10);
 
-			//랜덤값을 서로 비교하게 하기 만약 같은 값이면 다시 돌림
 			while (0)
 			{
 				if (radomInt > otherMonster->radomInt)
@@ -98,10 +97,10 @@ void AMonster::AddMonster(AActor* otherActor)
 	}
 
 }
-/*
+
 void AMonster::Destroyed()
 {
 	Super::Destroyed();
 
 
-}*/
+}

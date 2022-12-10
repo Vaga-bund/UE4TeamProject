@@ -15,7 +15,7 @@ ATreasureIsland::ATreasureIsland()
 void ATreasureIsland::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	playerGISS = GetGameInstance()->GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
 }
 
@@ -30,11 +30,11 @@ void ATreasureIsland::Reinforcement()
 {
 	radomInt = FMath::RandRange(0, 10);
 
-	if (radomInt >= 0 && radomInt <= 2) //30퍼 확률로 강화 성공
+	if (radomInt >= 0 && radomInt <= 2)
 	{
 		playerGISS->playerPower *= 2;
 	}
-	else //실패하면
+	else
 	{
 		playerGISS->playerPower /= 2;
 	}

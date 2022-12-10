@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-//박연지 추가
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -25,12 +25,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-	void Reinforcement();
+		void Reinforcement();
 
 private:
 	UPROPERTY()
-	int32 radomInt;
+		int32 radomInt;
 
 	UPROPERTY()
-	UPlayerGameInstanceSubsystem* playerGISS;
+		UPlayerGameInstanceSubsystem* playerGISS;
 };

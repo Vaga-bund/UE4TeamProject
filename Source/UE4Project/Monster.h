@@ -20,7 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	//virtual void Destroyed() override;
+	virtual void Destroyed() override;
 
 public:	
 	// Called every frame
@@ -38,7 +38,8 @@ public:
 	// 계산된 상태로 나와서 0이 출력...)
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	bool dead; //죽었는지 체크
+		bool dead;
+
 
 	UFUNCTION(BlueprintCallable)
 	void Crash(); //부딪쳤을 때
@@ -47,12 +48,12 @@ public:
 	void SetMonsterPower(int32 plusPower); //중립(랜덤 스폰 되는 것만) 또는 몬스터와 충돌했을 때 파워를 받음
 
 	UFUNCTION(BlueprintCallable)
-	void AddMonster(AActor* otherActor);
+		void AddMonster(AActor* otherActor);
 
 private:
 	UPROPERTY()
 	UPlayerGameInstanceSubsystem* playerGISS;
 
 	UPROPERTY()
-	int32 radomInt;
+		int32 radomInt;
 };
