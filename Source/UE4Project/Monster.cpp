@@ -15,7 +15,7 @@ AMonster::AMonster()
 void AMonster::BeginPlay()
 {
 	Super::BeginPlay();
-	monsterPowerMax = monsterPower;
+
 	playerGISS = GetGameInstance()->GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
 }
 
@@ -35,6 +35,8 @@ void AMonster::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AMonster::Crash()
 {
+	monsterPowerMax = monsterPower;
+
 	if (monsterPower <= playerGISS->playerPower)
 	{
 		playerGISS->playerPower -= monsterPower; //여기서 플레이어도 같이 처리해줌

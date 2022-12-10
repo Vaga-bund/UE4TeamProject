@@ -2,10 +2,13 @@
 //박연지
 
 #include "MouseController.h"
+//#include "Engine/Engine.h"
 
 AMouseController::AMouseController()
 {
-    bShowMouseCursor = true;
+    //bShowMouseCursor = true;
+    SetShowMouseCursor(true);
+    //GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("마우스"));
 }
 
 void AMouseController::MouseMove()
