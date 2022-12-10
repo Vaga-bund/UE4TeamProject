@@ -20,7 +20,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	virtual void Destroyed() override;
+	//virtual void Destroyed() override;
 
 public:	
 	// Called every frame
@@ -30,15 +30,12 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		int32 monsterPower;
+	int32 monsterPower;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		int32 monsterPowerMax; 
+	int32 monsterPowerMax; 
 	//중립체력 계속할 때 필요( monsterPower이걸로 사용하면 적 체력
 	// 계산된 상태로 나와서 0이 출력...)
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		bool dead;
 
 
 	UFUNCTION(BlueprintCallable)
@@ -48,7 +45,10 @@ public:
 	void SetMonsterPower(int32 plusPower); //중립(랜덤 스폰 되는 것만) 또는 몬스터와 충돌했을 때 파워를 받음
 
 	UFUNCTION(BlueprintCallable)
-		void AddMonster(AActor* otherActor);
+	void AddMonster(AActor* otherActor);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetUIPowerCpp();
 
 private:
 	UPROPERTY()

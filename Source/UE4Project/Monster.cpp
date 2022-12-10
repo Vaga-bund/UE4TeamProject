@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
-AMonster::AMonster() : radomInt(0), dead(false)
+AMonster::AMonster() : radomInt(0)
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -65,16 +65,22 @@ void AMonster::AddMonster(AActor* otherActor)
 		if (monsterPower > otherMonster->monsterPower)
 		{
 			SetMonsterPower(otherMonster->monsterPower);
+			SetUIPowerCpp();
 		}
 		else if (monsterPower == otherMonster->monsterPower)
 		{
-			radomInt = FMath::RandRange(0, 10);
-
-			while (0)
+			radomInt = FMath::RandRange(0, 100);
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(radomInt));
+			
+			/*
+			while (true)
 			{
+				//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("while"));
 				if (radomInt > otherMonster->radomInt)
 				{
 					SetMonsterPower(otherMonster->monsterPower);
+					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("radomInt > otherMonster->radomInt"));
+					SetUIPowerCpp_Implementation();
 					break;
 				}
 				else if (radomInt < otherMonster->radomInt)
@@ -87,20 +93,35 @@ void AMonster::AddMonster(AActor* otherActor)
 				{
 					radomInt = FMath::RandRange(0, 10);
 				}
+			}*/
+
+			if (radomInt > otherMonster->radomInt)
+			{
+				SetMonsterPower(otherMonster->monsterPower);
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("radomInt > otherMonster->radomInt"));
+				SetUIPowerCpp();
+			}
+			else if (radomInt < otherMonster->radomInt)
+			{
+				Destroy();
+			}
+			else
+			{
+				radomInt = FMath::RandRange(0, 100);
 			}
 		}
 		else
 		{
-			dead = true;
 			Destroy();
 		}
 	}
 
 }
 
+/*
 void AMonster::Destroyed()
 {
 	Super::Destroyed();
 
 
-}
+}*/
