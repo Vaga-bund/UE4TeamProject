@@ -49,10 +49,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AddMonster(AActor* otherActor);
 
-	UPROPERTY()
-	int32 radomInt;
-
 private:
 	UPROPERTY()
 	UPlayerGameInstanceSubsystem* playerGISS;
+
+	UPROPERTY()
+	int32 radomInt;
 };
