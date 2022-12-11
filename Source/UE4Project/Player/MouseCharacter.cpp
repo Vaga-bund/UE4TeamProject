@@ -16,7 +16,7 @@ AMouseCharacter::AMouseCharacter()
 	//회전값만
 	GetCharacterMovement()->bOrientRotationToMovement = true; // Character moves in the direction of input...	
 
-		// Don't rotate when the controller rotates. Let that just affect the camera.
+	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;

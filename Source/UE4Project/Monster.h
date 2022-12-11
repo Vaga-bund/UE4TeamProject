@@ -55,5 +55,5 @@ private:
 	UPlayerGameInstanceSubsystem* playerGISS;
 
 	UPROPERTY()
-		int32 radomInt;
+	int32 radomInt;
 };
