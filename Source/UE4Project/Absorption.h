@@ -49,7 +49,7 @@ public:
 
 
 public:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		class UStaticMeshComponent* StaticMeshMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		class UBoxComponent* absBox;
@@ -63,4 +63,6 @@ public:
 		void AbsorptionInit();
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "AbsorptionStat")
 		void AbsorptionRandomInit();
+
+
 };

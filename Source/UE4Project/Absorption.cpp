@@ -6,20 +6,22 @@
 // Sets default values
 AAbsorption::AAbsorption()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	absBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
-	StaticMeshMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
+	StaticMeshMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Boat"));
 	SetRootComponent(StaticMeshMesh);
 	absBox->SetupAttachment(StaticMeshMesh);
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> mesh(TEXT("StaticMesh'/Engine/BasicShapes/Cube'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> mesh(TEXT("StaticMesh'/Game/Cartoon_ships/Models/SM_Boat1'"));
+	ghostMaterialName = "Material'/Game/Cartoon_ships/Materials/MI_PirateBoatsSmallGreen'";
 	static ConstructorHelpers::FObjectFinder<UMaterialInterface> ghostMaterialAsset(*ghostMaterialName);
 	_ghostMaterial = ghostMaterialAsset.Object;
 	if (mesh.Succeeded())
 	{
 		absBox->SetWorldScale3D(FVector(2.0f, 2.0f, 2.0f));
+		absBox->SetWorldLocation(FVector(0.0f, 0.0f, 0.0f));
 		StaticMeshMesh->SetStaticMesh(mesh.Object);
 		StaticMeshMesh->SetMaterial(0, _ghostMaterial);
 		AbsorptionSpawnCheck = false;
@@ -61,9 +63,8 @@ void AAbsorption::AbsorptionInit_Implementation()
 		{
 			AbsorptionStateName = AbsorptionStateEnum->GetNameStringByValue((int64)AbsorptionState);
 		}
-
 		int(AbsorptionHp *= 1.5f);
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Max 2 ] : %d"), AbsorptionHp));
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Hp ] : %d"), AbsorptionHp));
 
 	}
 }
