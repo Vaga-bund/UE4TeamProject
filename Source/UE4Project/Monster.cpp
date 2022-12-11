@@ -37,7 +37,7 @@ void AMonster::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void AMonster::Crash()
 {
 	//monsterPowerMax = monsterPower;
-
+	
 	if (monsterPower <= playerGISS->playerPower)
 	{
 		playerGISS->playerPower -= monsterPower; //여기서 플레이어도 같이 처리해줌
