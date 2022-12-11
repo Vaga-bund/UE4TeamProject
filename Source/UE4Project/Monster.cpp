@@ -70,7 +70,6 @@ void AMonster::AddMonster(AActor* otherActor)
 		else if (monsterPower == otherMonster->monsterPower)
 		{
 			radomInt = FMath::RandRange(0, 100);
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::FromInt(radomInt));
 			
 			/*
 			while (true)
@@ -98,7 +97,6 @@ void AMonster::AddMonster(AActor* otherActor)
 			if (radomInt > otherMonster->radomInt)
 			{
 				SetMonsterPower(otherMonster->monsterPower);
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("radomInt > otherMonster->radomInt"));
 				SetUIPowerCpp();
 			}
 			else if (radomInt < otherMonster->radomInt)
