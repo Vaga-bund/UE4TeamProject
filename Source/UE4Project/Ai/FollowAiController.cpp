@@ -3,6 +3,7 @@
 
 #include "FollowAiController.h"
 #include "FollowAiCharacter.h"
+#include "FollowAIPawn.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
@@ -19,7 +20,7 @@ void AFollowAiController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
-	AFollowAiCharacter* AICharacter = Cast<AFollowAiCharacter>(InPawn);
+	AFollowAIPawn* AICharacter = Cast<AFollowAIPawn>(InPawn);
 
 	if (AICharacter)
 	{
