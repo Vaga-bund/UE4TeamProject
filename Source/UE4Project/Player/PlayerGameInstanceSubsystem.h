@@ -18,9 +18,10 @@ class UE4PROJECT_API UPlayerGameInstanceSubsystem : public UGameInstanceSubsyste
 public:
 	UPlayerGameInstanceSubsystem();
 
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadWrite)
 	int32 playerPower;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, category = "PlayerStat")
 		void SetAddDamage(int fightDamage);
+
 };

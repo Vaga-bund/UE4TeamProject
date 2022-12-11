@@ -48,6 +48,7 @@ void AMonster::Crash()
 	{
 		monsterPower -= playerGISS->playerPower;
 		playerGISS->playerPower = 0;
+		
 	}
 }
 
