@@ -2,7 +2,7 @@
 
 #include "FollowerToPlayerBTService.h"
 #include "FollowAiController.h"
-#include "UE4Project/Player/UE4ProjectCharacter.h"
+#include "UE4Project/Player/MouseCharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -21,7 +21,7 @@ void UFollowerToPlayerBTService::TickNode(UBehaviorTreeComponent& OwnerComp, uin
 	UWorld* World = ControllingPawn->GetWorld();
 	if (nullptr == World) return;
 
-	AUE4ProjectCharacter* Player = Cast<AUE4ProjectCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
+	AMouseCharacter* Player = Cast<AMouseCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
 
 	if (Player && Player->GetController()->IsPlayerController())
 	{

@@ -2,7 +2,7 @@
 
 #include "DetectBTService.h"
 #include "EnemyAIController.h"
-#include "UE4Project/Player/UE4ProjectCharacter.h"
+#include "UE4Project/Player/MouseCharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "DrawDebugHelpers.h"
 
@@ -39,7 +39,7 @@ void UDetectBTService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMe
 	{
 		for (auto const& OverlapResult : OverlapResults)
 		{
-			AUE4ProjectCharacter* ABCharacter = Cast<AUE4ProjectCharacter>(OverlapResult.GetActor());
+			AMouseCharacter* ABCharacter = Cast<AMouseCharacter>(OverlapResult.GetActor());
 			if (ABCharacter && ABCharacter->GetController()->IsPlayerController())
 			{
 				OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetKey, ABCharacter);
