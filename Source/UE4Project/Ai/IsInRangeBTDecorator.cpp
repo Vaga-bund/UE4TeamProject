@@ -3,7 +3,7 @@
 
 #include "IsInRangeBTDecorator.h"
 #include "EnemyAIController.h"
-#include "UE4Project/Player/UE4ProjectCharacter.h"
+#include "UE4Project/Player/MouseCharacter.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
 UIsInRangeBTDecorator::UIsInRangeBTDecorator()
@@ -19,7 +19,7 @@ bool UIsInRangeBTDecorator::CalculateRawConditionValue(UBehaviorTreeComponent& O
 	if (nullptr == ControllingPawn)
 		return false;
 
-	auto Target = Cast<AUE4ProjectCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(AEnemyAIController::TargetKey));
+	auto Target = Cast<AMouseCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(AEnemyAIController::TargetKey));
 	if (nullptr == Target)
 		return false;
 

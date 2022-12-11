@@ -51,7 +51,7 @@ void UDetectBTService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMe
 			}
 		}
 	}
-
-	OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetKey, nullptr);
+	//무한 추적을 위해서 초기화 제거
+	//OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetKey, nullptr);
 	DrawDebugSphere(World, Center, detectdRadius, 16, FColor::Red, false, 0.2f);
 }
