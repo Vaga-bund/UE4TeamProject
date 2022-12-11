@@ -45,15 +45,10 @@ void UDetectNpcBTService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* Nod
 			if (ABCharacter)
 			{
 				OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetNpcKey, ABCharacter);
-				DrawDebugSphere(World, Center, detectdRadius, 16, FColor::Green, false, 0.2f);
-
-				DrawDebugPoint(World, ABCharacter->GetActorLocation(), 10.0f, FColor::Blue, false, 0.2f);
-				DrawDebugLine(World, ControllingPawn->GetActorLocation(), ABCharacter->GetActorLocation(), FColor::Blue, false, 0.27f);
 				return;
 			}
 		}
 	}
 
 	OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetNpcKey, nullptr);
-	DrawDebugSphere(World, Center, detectdRadius, 16, FColor::Red, false, 0.2f);
 }

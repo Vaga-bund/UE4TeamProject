@@ -64,7 +64,6 @@ void AAbsorption::AbsorptionInit_Implementation()
 			AbsorptionStateName = AbsorptionStateEnum->GetNameStringByValue((int64)AbsorptionState);
 		}
 		int(AbsorptionHp *= 1.5f);
-		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ Hp ] : %d"), AbsorptionHp));
 
 	}
 }
@@ -76,5 +75,4 @@ void AAbsorption::AbsorptionRandomInit_Implementation()
 	{
 		AbsorptionStateName = AbsorptionStateEnum->GetNameStringByValue((int64)AbsorptionState);
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("[ RandomHp ] : %d"), AbsorptionHp));
 }

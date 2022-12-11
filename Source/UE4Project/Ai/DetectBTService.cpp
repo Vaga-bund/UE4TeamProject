@@ -43,15 +43,11 @@ void UDetectBTService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMe
 			if (ABCharacter && ABCharacter->GetController()->IsPlayerController())
 			{
 				OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetKey, ABCharacter);
-				DrawDebugSphere(World, Center, detectdRadius, 16, FColor::Green, false, 0.2f);
-
-				DrawDebugPoint(World, ABCharacter->GetActorLocation(), 10.0f, FColor::Blue, false, 0.2f);
-				DrawDebugLine(World, ControllingPawn->GetActorLocation(), ABCharacter->GetActorLocation(), FColor::Blue, false, 0.27f);
+				
 				return;
 			}
 		}
 	}
 	//무한 추적을 위해서 초기화 제거
 	//OwnerComp.GetBlackboardComponent()->SetValueAsObject(AEnemyAIController::TargetKey, nullptr);
-	DrawDebugSphere(World, Center, detectdRadius, 16, FColor::Red, false, 0.2f);
 }
