@@ -8,7 +8,13 @@ ATreasureIsland::ATreasureIsland()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	
+	static ConstructorHelpers::FObjectFinder<UBlueprint> spawnTI(TEXT("Blueprint'/Game/TreasureIsland/TreasureIslandBPClear.TreasureIslandBPClear'"));
+	
+	if (spawnTI.Object != NULL)
+	{
+		spawnTIBlueprint = (UClass*)spawnTI.Object->GeneratedClass;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -40,4 +46,20 @@ void ATreasureIsland::Reinforcement()
 	}
 
 	Destroy();
+}
+
+void ATreasureIsland::Destroyed()
+{
+	Super::Destroyed();
+
+	UWorld* world = GetWorld();
+	if (world)
+	{
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.Owner = this;
+		FRotator rotator = GetActorRotation();
+		FVector  SpawnLocation = GetActorLocation();
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("!"));
+		world->SpawnActor<AActor>(spawnTIBlueprint, SpawnLocation, rotator, SpawnParams);
+	}
 }
