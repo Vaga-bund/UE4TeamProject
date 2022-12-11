@@ -16,7 +16,7 @@ AMonster::AMonster() : radomInt(0)
 void AMonster::BeginPlay()
 {
 	Super::BeginPlay();
-
+	monsterPowerMax = monsterPower;
 	playerGISS = GetGameInstance()->GetSubsystem<UPlayerGameInstanceSubsystem>(GetWorld()->GetGameInstance());
 }
 
@@ -36,7 +36,7 @@ void AMonster::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AMonster::Crash()
 {
-	monsterPowerMax = monsterPower;
+	//monsterPowerMax = monsterPower;
 
 	if (monsterPower <= playerGISS->playerPower)
 	{
